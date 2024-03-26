@@ -1,0 +1,67 @@
+{
+    "Top Of The Hill Restaurant & Brewery": {
+      "price": "$$",
+      "cuisine": "American",
+      "image": "https://user-images.githubusercontent.com/89547948/233850443-8892a57c-bcfc-4706-9f3c-e81a8b02146b.png"
+    },
+    "Sup Dogs": {
+      "price": "$",
+      "cuisine": "American",
+      "image": "https://user-images.githubusercontent.com/89547948/233850496-00d130b0-cb61-4add-816c-dd034a23a8df.png"
+    },
+    "McDonald's": {
+      "price": "$",
+      "cuisine": "Fast Food",
+      "image": "https://user-images.githubusercontent.com/89547948/233850528-079e71a9-1868-4961-9f68-a2efc220ab69.png"
+    },
+    "Chick-fil-A": {
+      "price": "$",
+      "cuisine": "Fast Food",
+      "image": "https://user-images.githubusercontent.com/89547948/233850558-503b7c61-97b1-4ada-bf90-6ed595868c95.png"
+    },
+    "Momo's Master": {
+      "price": "$",
+      "cuisine": "Nepalese",
+      "image": "https://user-images.githubusercontent.com/89547948/233855959-76e0709e-8176-4eb4-9e7f-e00424a4c6a6.png"
+    },
+    "Four Corner": {
+      "price": "$$",
+      "cuisine": "Bar & grill",
+      "image": "https://user-images.githubusercontent.com/89547948/233856030-2298cabb-e4d9-42f1-a9eb-4c89ceb2a1ef.png"
+    },
+    "AL's Burger Shack": {
+      "price": "$",
+      "cuisine": "American",
+      "image": "https://user-images.githubusercontent.com/5318792/233864681-bd1f7026-32cc-4b96-8cdd-173008672709.jpg"
+    },
+    "Chipotle Mexican Grill": {
+      "price": "$",
+      "cuisine": "Mexican",
+      "image": "https://www.gannett-cdn.com/presto/2022/10/11/PJAM/9c50d7cf-c501-4f9e-950d-9f708c1750c6-chipolte.jpg"
+    },
+    "Trolly Stop Hot Dogs": {
+      "price": "$",
+      "cuisine": "American",
+      "image": "https://images.squarespace-cdn.com/content/v1/5efe52a88e70b45d5d20b87c/0d511c70-d5ee-45a8-aac7-c07fb896e836/IMG_1400_wb_new_sky2_f.jpg"
+    },
+    "Heavenly Buffaloes": {
+      "price": "",
+      "cuisine": "",
+      "image": "https://images.squarespace-cdn.com/content/v1/55c7b699e4b0ff8d211400b0/1611941857838-PSJY64MWFVE2NENII6MV/DSCF0236.JPG"
+    },
+    "Time-Out Restaurant": {
+      "price": "",
+      "cuisine": "",
+      "image": "https://user-images.githubusercontent.com/5318792/233865125-703f65f8-3b95-47d2-8812-6cc09324c2b9.jpg"
+    },
+    "Bonchon": {
+      "price": "$$",
+      "cuisine": "Korean",
+      "image": "https://www.gannett-cdn.com/presto/2018/12/15/PPHX/2c114165-78d4-46c9-96ee-ab433fec9409-Bonchon_-_Interior.jpg"
+    },
+    "Buns": {
+      "price": "$",
+      "cuisine": "Burger",
+      "image": "https://user-images.githubusercontent.com/5318792/233865245-959047bf-aa39-4a9f-bdab-0b38b9ce73c4.jpg"
+    }
+  }

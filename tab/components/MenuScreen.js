@@ -11,11 +11,7 @@ import {
 import FoodItem from "./FoodItem";
 import rest_info from "../../backend/restaurant.json";
 
-// Filters out items based on allergies given by user.
-// Vegetarian and Vegan must be handled differently.
-// TODO: potentially add list of meats and dairy items to seperate json file and call from there
-
-function safefilter(restrictions, item) {
+function safefilter(restrictions = [], item) { // Ensure that restrictions is defined with a default value
   let meatlist = [
     "chicken",
     "beef",
@@ -49,13 +45,12 @@ function safefilter(restrictions, item) {
 }
 
 export default function MenuScreen(props) {
-
   const [restrictions, setRestrictions] = useState([]);
   const rest_image = props.route.params.url.uri;
 
   const getRestrictions = async () => {
     let temp = await getUserInfo();
-    setRestrictions(temp);
+    setRestrictions(temp || []); // Ensure that setRestrictions receives an array
   };
 
   useEffect(() => {
@@ -63,7 +58,7 @@ export default function MenuScreen(props) {
   }, []);
 
   var parn = "";
-  menu = [];
+  let menu = []; // Declare menu as let
   const safefoods = {};
 
   if (typeof props.route.params !== "undefined") {
@@ -100,6 +95,7 @@ export default function MenuScreen(props) {
               return safefoods[item].map(({ Description, Price }) => {
                 return (
                   <FoodItem
+                    key={item} // Add key prop to FoodItem
                     style={styles.foodItem}
                     url={{
                       uri: "https://user-images.githubusercontent.com/32803510/230947533-1489be79-18c0-4d7d-a8cc-069ff84f98ba.png"
@@ -121,6 +117,7 @@ export default function MenuScreen(props) {
               return menu[item].map(({ Description, Price }) => {
                 return (
                   <FoodItem
+                    key={item} // Add key prop to FoodItem
                     style={styles.foodItem}
                     url={{
                       uri: "https://user-images.githubusercontent.com/32803510/230947533-1489be79-18c0-4d7d-a8cc-069ff84f98ba.png",
@@ -133,13 +130,11 @@ export default function MenuScreen(props) {
                 );
               });
             })}
-           
           </ScrollView>
         </View>
       </ScrollView>
     </View>
   );
-
 }
 
 const styles = StyleSheet.create({

@@ -12,7 +12,8 @@ export default function UserProfile(props) {
     const navigation = useNavigation();
     const [personalData, setPersonalData] = useState([]);
     const [iconButtonCounter, setIconButtonCounter] = useState(0);
-    const [allergyBool, setAllergyBool] = useState(new Array(12).fill(false));
+    const [allergyBool, setAllergyBool] = useState(new Array(10).fill(false));
+    const [dietaryBool, setDietaryBool] = useState(new Array(2).fill(false));
 
     useEffect(() => {
         getUserInfo();
@@ -84,7 +85,7 @@ export default function UserProfile(props) {
                     </TouchableOpacity>
                 </View>
                 <PersonalInfo iconButtonCounter={iconButtonCounter} personalData={personalData} setPersonalData={setPersonalData} />
-                <Allergies iconButtonCounter={iconButtonCounter} allergyBool={allergyBool} setAllergyBool={setAllergyBool} />
+                <Allergies iconButtonCounter={iconButtonCounter} allergyBool={allergyBool} setAllergyBool={setAllergyBool} setDietaryBool={setDietaryBool} />
                 {iconButtonCounter % 2 == 0 &&
                     <TouchableOpacity
                         onPress={() => setIconButtonCounter(iconButtonCounter + 1)}

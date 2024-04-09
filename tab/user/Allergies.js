@@ -8,6 +8,21 @@ import {
   import BouncyCheckbox from "react-native-bouncy-checkbox";
   
   export default function Allergies(props) {
+    const dietaryList = [
+      "Vegan",
+      "Vegetarian"
+    ];
+    const dietaryIcons = [
+      require("../../img/icons/Vegan.png"),
+      require("../../img/icons/Vegetarian.png")
+    ];
+    var dietaryColOne = [];
+    var dietaryColTwo = [];
+    var dietaryBool = props.dietaryBool;
+    if (dietaryBool  === undefined) {
+      var dietaryBool = new Array(2).fill(false);
+    }
+
     const allergiesList = [
       "Milk",
       "Eggs",
@@ -17,12 +32,10 @@ import {
       "Soybeans",
       "Wheat",
       "Shellfish",
-      "Gluten Free",
-      "Vegan",
-      "Vegetarian",
-      "Halal",
+      "Gluten",
+      "Sesame",
     ];
-    const urls = [
+    const allergieIcons = [
       require("../../img/icons/Milk.png"),
       require("../../img/icons/Eggs.png"),
       require("../../img/icons/Fish.png"),
@@ -32,12 +45,10 @@ import {
       require("../../img/icons/Wheat.png"),
       require("../../img/icons/Shellfish.png"),
       require("../../img/icons/GlutenFree.png"),
-      require("../../img/icons/Vegan.png"),
-      require("../../img/icons/Vegetarian.png"),
-      require("../../img/icons/Halal.png"),
+      require("../../img/icons/Sesame.png"),
     ];
-    var columnOne = [];
-    var columnTwo = [];
+    var allergiesColOne = [];
+    var allergiesColTwo = [];
     var isEdittable = false;
     if (props.iconButtonCounter % 2 == 1) {
       isEdittable = true;
@@ -45,11 +56,96 @@ import {
   
     var allergyBool = props.allergyBool;
     if (allergyBool === undefined) {
-      var allergyBool = new Array(12).fill(false);
+      var allergyBool = new Array(10).fill(false);
+    }
+
+    for (let i = 0; i < dietaryList.length / 2; i++) {
+      dietaryColOne.push(
+        <View style={styles.checkboxRowContainer} key={i}>
+          {props.iconButtonCounter % 2 == 0 && (
+            <BouncyCheckbox
+              textStyle={{ textDecorationLine: "none" }}
+              style={styles.checkboxRow}
+              text={dietaryList[i]}
+              fillColor="#359EFF"
+              disableBuiltInState
+              bounceEffectIn="1"
+              isChecked={dietaryBool[i]}
+              onPress={(isChecked) => {
+                {
+                  if (isChecked) {
+                  }
+                  console.log(dietaryList[i] + " " + isChecked);
+                }
+              }}
+            />
+          )}
+          {props.iconButtonCounter % 2 == 1 && (
+            <BouncyCheckbox
+              textStyle={{ textDecorationLine: "none" }}
+              style={styles.checkboxRow}
+              text={dietaryList[i]}
+              fillColor="#359EFF"
+              isChecked={dietaryBool[i]}
+              onPress={(isChecked) => {
+                {
+                  dietaryBool[i] = isChecked;
+                  props.setDietaryBool(dietaryBool);
+                }
+              }}
+            />
+          )}
+          <Image style={styles.icon} source={dietaryIcons[i]} />
+        </View>
+      );
+  
+      dietaryColTwo.push(
+        <View
+          style={styles.checkboxRowContainer}
+          key={dietaryList.length / 2 + i}
+        >
+          {props.iconButtonCounter % 2 == 0 && (
+            <BouncyCheckbox
+              textStyle={{ textDecorationLine: "none" }}
+              style={styles.checkboxRow}
+              text={dietaryList[dietaryList.length / 2 + i]}
+              fillColor="#359EFF"
+              disableBuiltInState
+              bounceEffectIn="1"
+              isChecked={dietaryBool[dietaryList.length / 2 + i]}
+              onPress={(isChecked) => {
+                console.log(
+                  dietaryList[dietaryList.length / 2 + i] + " " + isChecked
+                );
+              }}
+            />
+          )}
+          {props.iconButtonCounter % 2 == 1 && (
+            <BouncyCheckbox
+              textStyle={{ textDecorationLine: "none" }}
+              style={styles.checkboxRow}
+              text={dietaryList[dietaryList.length / 2 + i]}
+              fillColor="#359EFF"
+              isChecked={dietaryBool[dietaryList.length / 2 + i]}
+              onPress={(isChecked) => {
+                {
+                  dietaryBool[dietaryList.length / 2 + i] = isChecked;
+                  props.setDietaryBool(dietaryBool);
+                }
+              }}
+            />
+          )}
+          <Image
+            style={styles.icon}
+            source={dietaryIcons[dietaryList.length / 2 + i]}
+          />
+        </View>
+      );
     }
   
+  
     for (let i = 0; i < allergiesList.length / 2; i++) {
-      columnOne.push(
+      allergiesColOne.push(
         <View style={styles.checkboxRowContainer} key={i}>
           {props.iconButtonCounter % 2 == 0 && (
             <BouncyCheckbox
@@ -84,11 +180,11 @@ import {
               }}
             />
           )}
-          <Image style={styles.icon} source={urls[i]} />
+          <Image style={styles.icon} source={allergieIcons[i]} />
         </View>
       );
   
-      columnTwo.push(
+      allergiesColTwo.push(
         <View
           style={styles.checkboxRowContainer}
           key={allergiesList.length / 2 + i}
@@ -126,7 +222,7 @@ import {
           )}
           <Image
             style={styles.icon}
-            source={urls[allergiesList.length / 2 + i]}
+            source={allergieIcons[allergiesList.length / 2 + i]}
           />
         </View>
       );
@@ -134,14 +230,15 @@ import {
   
     return (
       <View style={styles.allergiesView}>
+        <Text style={styles.title}>Dietary Preference</Text>
+        <View style={isEdittable ? styles.allergiesDataEditting : styles.allergiesData}>
+          <View style={styles.checkboxColumn}>{dietaryColOne}</View>
+          <View style={styles.checkboxColumn}>{dietaryColTwo}</View>
+        </View>
         <Text style={styles.title}>My Allergies</Text>
-        <View
-          style={
-            isEdittable ? styles.allergiesDataEditting : styles.allergiesData
-          }
-        >
-          <View style={styles.checkboxColumn}>{columnOne}</View>
-          <View style={styles.checkboxColumn}>{columnTwo}</View>
+        <View style={isEdittable ? styles.allergiesDataEditting : styles.allergiesData}>
+          <View style={styles.checkboxColumn}>{allergiesColOne}</View>
+          <View style={styles.checkboxColumn}>{allergiesColTwo}</View>
         </View>
       </View>
     );

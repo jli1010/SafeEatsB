@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import { useNavigation } from '@react-navigation/native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth,db } from '../config/firebase';
+import { ScrollView } from 'react-native-web';
 
 const LogIn = () => {
     const navigation = useNavigation();

@@ -1,100 +1,112 @@
+import React, { useState } from "react";
 import {
-    Text,
-    View,
-    StyleSheet,
-    ScrollView,
-    TouchableOpacity,
-  } from "react-native";
-import React from "react";
+  Text,
+  View,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+  Dimensions,
+} from "react-native";
 import Partner from "./Partner";
-  
-  export default function HomePartners(props) {
-    let restaurants = props.restaurants;
-    const img_urls = {
-      mc: require("../../img/partner/BG1.png"),
-      ch: require("../../img/partner/BG2.png"),
-    };
-  
-    return (
-      <ScrollView style={styles.scrollView}>
-        <View style={styles.featuredPartnersContainer}>
-          <Text style={styles.featuredPartnersTitle}>Featured Partners</Text>
-  
-          <TouchableOpacity style={styles.seeAllButton} onPress={() => {}}>
+
+export default function HomePartners(props) {
+  const [seeAllClicked, setSeeAllClicked] = useState(false);
+
+  // Function to handle the action of populating the page with all restaurants
+  const handleSeeAllRestaurants = () => {
+    setSeeAllClicked(true);
+  };
+
+  return (
+    <ScrollView style={styles.scrollView}>
+      <View style={styles.featuredPartnersContainer}>
+        <Text style={styles.featuredPartnersTitle}>Featured Partners</Text>
+
+        {!seeAllClicked && (
+          <TouchableOpacity
+            style={styles.seeAllButton}
+            onPress={handleSeeAllRestaurants}
+          >
             <Text style={styles.seeAllText}>See all</Text>
           </TouchableOpacity>
-        </View>
-  
-        <ScrollView style={styles.horizontalView} horizontal={true}>
-          {restaurants.map((restaurant, key) => (
-            <Partner
+        )}
+      </View>
+
+      <ScrollView
+        style={seeAllClicked ? styles.verticalView : styles.horizontalView}
+        horizontal={!seeAllClicked}
+        contentContainerStyle={styles.scrollViewContent}
+      >
+        {/* Render restaurants based on seeAllClicked state */}
+        {props.restaurants.map((restaurant, key) => (
+          <View
             key={key}
-            style={styles.partnerView}
-            url={restaurant.url}
-            title={restaurant.name}
-            address={restaurant.address}
-            navigation={props.navigation}
-          />
-          ))}
-          
-        </ScrollView>
+            style={[
+              styles.partnerView,
+              seeAllClicked && styles.verticalRestaurantContainer,
+            ]}
+          >
+            <Partner
+              style={[
+                styles.partnerContent,
+                seeAllClicked && styles.verticalRestaurantContent,
+              ]}
+              url={restaurant.url}
+              title={restaurant.name}
+              address={restaurant.address}
+              navigation={props.navigation}
+            />
+          </View>
+        ))}
       </ScrollView>
-    );
-  }
-  
-  const styles = StyleSheet.create({
-    blue: {
-      backgroundColor: "blue",
-    },
-    container: {
-      flex: 1,
-      backgroundColor: "#F5F5F5",
-      alignItems: "center",
-      justifyContent: "center",
-      height: "100%",
-      width: "100%",
-    },
-    upperView: {
-      height: "30%",
-      width: "100%",
-      flex: 1,
-      flexDirection: "column",
-    },
-    horizontalView: {
-      width: "100%",
-      flexDirection: "row",
-      alignContent: "flex-start",
-    },
-    searchBar: {
-      height: 40,
-      marginTop: -30,
-      marginLeft: "12.5%",
-    },
-    searchSection: {
-      borderColor: "#F00",
-      borderWidth: 2,
-      borderRadius: 15,
-      marginLeft: "5%",
-      justifyContent: "center",
-      width: "70%",
-    },
-    searchIcon: {
-      marginTop: 10,
-      marginLeft: 10,
-    },
-    featuredPartnersContainer: {
-      margin: 10,
-      flexDirection: "row",
-    },
-    featuredPartnersTitle: {
-      fontSize: 24,
-    },
-    seeAllButton: {
-      justifyContent: "space-evenly",
-      marginLeft: "30%",
-    },
-    seeAllText: {
-      color: "#F00",
-      textDecorationLine: "underline",
-    },
-  });
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  // Your styles here
+  scrollView: {
+    flex: 1,
+  },
+  horizontalView: {
+    width: "100%",
+    flexDirection: "row",
+    alignContent: "flex-start",
+  },
+  verticalView: {
+    width: "100%",
+  },
+  scrollViewContent: {
+    alignItems: 'flex-start',
+  },
+  featuredPartnersContainer: {
+    margin: 10,
+    flexDirection: "row",
+  },
+  featuredPartnersTitle: {
+    fontSize: 24,
+  },
+  seeAllButton: {
+    justifyContent: "space-evenly",
+    marginLeft: "30%",
+  },
+  seeAllText: {
+    color: "#F00",
+    textDecorationLine: "underline",
+  },
+  partnerView: {
+    flex: 1,
+    margin: 10,
+  },
+  verticalRestaurantContainer: {
+    width: Dimensions.get("window").width - 20, // Adjusted width
+  },
+  partnerContent: {
+    // Adjust styles of Partner component if needed
+  },
+  verticalRestaurantContent: {
+    width: "100%",
+    height: "auto",
+  },
+});

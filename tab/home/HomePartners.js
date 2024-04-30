@@ -71,7 +71,7 @@ import Partner from "./Partner";
       marginLeft: "12.5%",
     },
     searchSection: {
-      borderColor: "#F00",
+      borderColor: "#8DB670",
       borderWidth: 2,
       borderRadius: 15,
       marginLeft: "5%",
@@ -94,7 +94,7 @@ import Partner from "./Partner";
       marginLeft: "30%",
     },
     seeAllText: {
-      color: "#F00",
+      color: "#8DB670",
       textDecorationLine: "underline",
     },
   });

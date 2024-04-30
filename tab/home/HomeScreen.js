@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     width: '65%'
   },
   searchSection: {
-    borderColor: "#F00",
+    borderColor: "#8DB670",
     borderWidth: 2,
     borderRadius: 15,
     marginLeft: "5%",
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     marginLeft: "30%",
   }, 
   seeAllText: {
-    color: "#F00",
+    color: "#8DB670",
     textDecorationLine: 'underline',
 
   },
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     paddingBottom: 17.5
   },
   cancelText: {
-    color: "#FF0000",
+    color: "#8DB670",
     marginLeft: "80%",
   }
   

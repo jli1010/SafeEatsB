@@ -91,7 +91,7 @@ selectorCreateAccount: {
 },
 
 selectorLogIn: {
-    borderBottomColor: "#FF0000"
+    borderBottomColor: "#8DB670"
 },
 fieldsContainer: {
     flexDirection: "column",
@@ -112,7 +112,7 @@ createAccountText: {
 
 logInText: {
     fontSize: 20,
-    color: "#FF0000",
+    color: "#8DB670",
     paddingBottom: 5
     
 },

@@ -4,7 +4,7 @@
 
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, TextInput, TouchableOpacity, ScrollView } from "react-native";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../config/firebase';
 import { ref, set } from 'firebase/database';
@@ -15,6 +15,12 @@ function CreateAccount() {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [gender, setGender] = useState('');
+    const [birthday, setBirthday] = useState('');
+    const [address, setAddress] = useState('');
+
     const [error, setError] = useState('');
 
     const createAccount = () => {
@@ -23,8 +29,12 @@ function CreateAccount() {
             const user = userCredential.user;
             const userId = user.uid;
             set(ref(db, 'users/' + userId), {
-                username: fullName,
+                fullName: fullName,
                 email: email,
+                phoneNumber: phoneNumber,
+                gender: gender,
+                birthday: birthday,
+                address: address,
                 foodres: "0"
               });
 
@@ -39,7 +49,7 @@ function CreateAccount() {
     }
 
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.fieldsContainer}>
                 <Text style={styles.titleFieldTitle}>Full Name</Text>
                 <TextInput
@@ -48,10 +58,38 @@ function CreateAccount() {
                     value={fullName}
                     onChangeText={setFullName}
                 />
-                <Text style={styles.titleFieldTitle}>Email address</Text>
+                <Text style={styles.titleFieldTitle}>Phone Number</Text>
                 <TextInput
                     style={styles.textField}
-                    placeholder="Enter your email..."
+                    placeholder="XXX-XXX-XXXX"
+                    value={phoneNumber}
+                    onChangeText={setPhoneNumber}
+                />
+                <Text style={styles.titleFieldTitle}>Gender</Text>
+                <TextInput
+                    style={styles.textField}
+                    placeholder="Enter your gender..."
+                    value={gender}
+                    onChangeText={setGender}
+                />
+                <Text style={styles.titleFieldTitle}>Birthday</Text>
+                <TextInput
+                    style={styles.textField}
+                    placeholder="XX/XX/XXXX"
+                    value={birthday}
+                    onChangeText={setBirthday}
+                />
+                <Text style={styles.titleFieldTitle}>Address</Text>
+                <TextInput
+                    style={styles.textField}
+                    placeholder="Enter your address..."
+                    value={address}
+                    onChangeText={setAddress}
+                />
+                <Text style={styles.titleFieldTitle}>Email Address</Text>
+                <TextInput
+                    style={styles.textField}
+                    placeholder="SafeEats@gmail.com"
                     value={email}
                     onChangeText={setEmail}
                 />
@@ -69,48 +107,37 @@ function CreateAccount() {
                     underlayColor='#fff'>
                     <Text style={styles.signText}>Sign Up</Text>
                 </TouchableOpacity>
-        </View>
-    </View>
+            </View>
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-      display: "flex",
-      flexDirection: "column",
-      backgroundColor: '#F5F5F5',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: "100%",
-      width: "100%",
+        flexGrow: 1,
+        backgroundColor: '#F5F5F5',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 20,
     },
     fieldsContainer: {
-        flexDirection: "column",
-        flex: 2,
         width: "100%",
         alignItems: "center"
     },
-    signUpContainer: {
-    },
     textField: {
-      height: 50,
-      borderColor: '#999999',
-      borderWidth: 1,
+        height: 50,
+        borderColor: '#999999',
+        borderWidth: 1,
 
-      width: "80%",
-      margin: 10,
-      paddingLeft: 5,
-      paddingRight: 5,
-      paddingBottom: 5,
-      fontSize: 18,
+        width: "80%",
+        margin: 10,
+        paddingLeft: 5,
+        paddingRight: 5,
+        paddingBottom: 5,
+        fontSize: 18,
     },
     titleFieldTitle: {
         marginTop: 20,
-        marginLeft: 40,
-        alignSelf: 'stretch',
-        fontSize: 18,
-    },
-    titleField: {
         marginLeft: 40,
         alignSelf: 'stretch',
         fontSize: 18,
@@ -120,11 +147,11 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginTop: 10
     },
-    signText:{
-        color:'#FFF',
-        textAlign:'center',
-        paddingLeft : "25%",
-        paddingRight : "25%",
+    signText: {
+        color: '#FFF',
+        textAlign: 'center',
+        paddingLeft: "25%",
+        paddingRight: "25%",
         paddingTop: 20,
         paddingBottom: 20,
         fontWeight: "bold"

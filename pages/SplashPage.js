@@ -22,7 +22,7 @@ const SplashPage = () => {
     <View style={styles.slide}>
       <Image style={styles.pattern} source={require('../img/splash.png')} />
       <Text style={styles.title}>Welcome to SafeEats</Text>
-      <Text style={styles.description}>An app for safer and easier dining options.</Text> 
+      <Text style={styles.description}>An app designed for allergen free dining.</Text> 
       <Pressable onPress={goToNextSlide} style={styles.button}>
         <Text style={styles.buttonText}>Next</Text>
       </Pressable>
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     elevation: 3,
     backgroundColor: '#8DB670',
-    marginTop: 20,
+    marginTop: 15,
   },
   buttonText: {
     fontSize: 20,

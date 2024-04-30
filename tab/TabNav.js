@@ -18,7 +18,7 @@ import {
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
-          tabBarActiveTintColor: "#F00",
+          tabBarActiveTintColor: "#8DB670",
         }}
       >
         <Tab.Screen

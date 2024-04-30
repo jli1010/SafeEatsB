@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
         borderRadius: 50
     },
     logOutButton: {
-        backgroundColor: "#FF0000",
+        backgroundColor: "#8DB670",
         width: "25%",
         height: "40%",
         borderRadius: 10
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     editButton: {
-        backgroundColor: "#F00",
+        backgroundColor: "#8DB670",
         width: 40,
         height: 40,
         alignItems: "center",

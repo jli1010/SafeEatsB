@@ -10,7 +10,7 @@ const getUserInfo = async () => {
     const snapshot = await get(userRef);
     if (snapshot.exists()) {
         const userData = snapshot.val();
-        const username = userData.username;
+        const fullName = userData.fullName;
         const foodres = parseInt(userData.foodres,10);
         return boolToAllergy(numToBool(foodres))
 

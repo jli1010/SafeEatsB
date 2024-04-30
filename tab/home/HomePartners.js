@@ -13,7 +13,6 @@ import Partner from "./Partner";
 export default function HomePartners(props) {
   const [seeAllClicked, setSeeAllClicked] = useState(false);
 
-  // Function to handle the action of populating the page with all restaurants
   const handleSeeAllRestaurants = () => {
     setSeeAllClicked(true);
   };
@@ -65,7 +64,7 @@ export default function HomePartners(props) {
 }
 
 const styles = StyleSheet.create({
-  // Your styles here
+
   scrollView: {
     flex: 1,
   },
@@ -100,10 +99,10 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   verticalRestaurantContainer: {
-    width: Dimensions.get("window").width - 20, // Adjusted width
+    width: Dimensions.get("window").width - 20,
   },
   partnerContent: {
-    // Adjust styles of Partner component if needed
+    // 
   },
   verticalRestaurantContent: {
     width: "100%",

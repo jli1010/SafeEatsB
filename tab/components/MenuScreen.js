@@ -11,7 +11,7 @@ import {
 import FoodItem from "./FoodItem";
 import rest_info from "../../backend/restaurant.json";
 
-function safefilter(restrictions = [], item) { // Ensure that restrictions is defined with a default value
+function safefilter(restrictions = [], item) { 
   let meatlist = [
     "chicken",
     "beef",
@@ -50,7 +50,7 @@ export default function MenuScreen(props) {
 
   const getRestrictions = async () => {
     let temp = await getUserInfo();
-    setRestrictions(temp || []); // Ensure that setRestrictions receives an array
+    setRestrictions(temp || []); 
   };
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function MenuScreen(props) {
   }, []);
 
   var parn = "";
-  let menu = []; // Declare menu as let
+  let menu = []; 
   const safefoods = {};
 
   if (typeof props.route.params !== "undefined") {

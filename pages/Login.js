@@ -1,11 +1,11 @@
-import {View, StyleSheet, TouchableOpacity, Text, TextInput } from 'react-native';
-import React, {useState} from "react";
+import { View, StyleSheet, TouchableOpacity, Text, TextInput } from 'react-native';
+import React, { useState } from "react";
 import { useNavigation } from '@react-navigation/native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth,db } from '../config/firebase';
+import { auth, db } from '../config/firebase';
 import { ScrollView } from 'react-native-web';
 
-const LogIn = () => {
+function LogIn() {
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -91,7 +91,7 @@ selectorCreateAccount: {
 },
 
 selectorLogIn: {
-    borderBottomColor: "#FF0000"
+    borderBottomColor: "#8DB670"
 },
 fieldsContainer: {
     flexDirection: "column",
@@ -112,7 +112,7 @@ createAccountText: {
 
 logInText: {
     fontSize: 20,
-    color: "#FF0000",
+    color: "#8DB670",
     paddingBottom: 5
     
 },

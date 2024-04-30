@@ -5,16 +5,28 @@ import { NavigationContainer } from '@react-navigation/native';
 // Pages
 import Main from './pages/Main';
 import TabNav from './tab/TabNav';
+import SplashPage from './pages/SplashPage';
+import LoadingPage from './pages/LoadingPage';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-    <Stack.Navigator 
+    <Stack.Navigator initialRouteName="Splash"
       screenOptions={{
         headerShown: false
       }}>
+      <Stack.Screen 
+        name="LoadingPage" 
+        component={LoadingPage} 
+        options={{ headerShown: false }} 
+      />
+      <Stack.Screen 
+        name="SplashPage" 
+        component={SplashPage} 
+        options={{ headerShown: false }} 
+      />
       <Stack.Screen
         name="Main"
         component={Main}

@@ -5,8 +5,6 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  Image,
-  Dimensions,
 } from "react-native";
 import Partner from "./Partner";
 
@@ -18,7 +16,7 @@ export default function HomePartners(props) {
   };
 
   return (
-    <ScrollView style={styles.scrollView}>
+    <ScrollView style={styles.container}>
       <View style={styles.featuredPartnersContainer}>
         <Text style={styles.featuredPartnersTitle}>Featured Partners</Text>
 
@@ -64,48 +62,43 @@ export default function HomePartners(props) {
 }
 
 const styles = StyleSheet.create({
-
-  scrollView: {
+  container: {
     flex: 1,
-  },
-  horizontalView: {
-    width: "100%",
-    flexDirection: "row",
-    alignContent: "flex-start",
-  },
-  verticalView: {
-    width: "100%",
-  },
-  scrollViewContent: {
-    alignItems: 'flex-start',
+    backgroundColor: "#F5F5F5",
   },
   featuredPartnersContainer: {
-    margin: 10,
     flexDirection: "row",
+    margin: 10,
   },
   featuredPartnersTitle: {
     fontSize: 24,
   },
   seeAllButton: {
-    justifyContent: "space-evenly",
-    marginLeft: "30%",
+    marginLeft: "auto",
   },
   seeAllText: {
-    color: "#F00",
+    color: "#8DB670",
     textDecorationLine: "underline",
   },
+  horizontalView: {
+    flexDirection: "row",
+  },
+  verticalView: {
+    flexDirection: "column",
+  },
+  scrollViewContent: {
+    flexGrow: 1,
+  },
   partnerView: {
-    flex: 1,
     margin: 10,
   },
-  verticalRestaurantContainer: {
-    width: Dimensions.get("window").width - 20,
-  },
   partnerContent: {
-    // 
+    // Your partner content styles here
+  },
+  verticalRestaurantContainer: {
+    // Additional styles for vertical view
   },
   verticalRestaurantContent: {
-    width: "100%",
-    height: "auto",
+    // Additional styles for vertical view
   },
 });

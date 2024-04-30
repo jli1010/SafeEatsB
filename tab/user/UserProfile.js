@@ -28,17 +28,21 @@ export default function UserProfile(props) {
                 const snapshot = await get(userRef);
                 if (snapshot.exists()) {
                     const userData = snapshot.val();
-                    const username = userData.username;
+                    const fullName = userData.fullName;
                     const foodres = parseInt(userData.foodres, 10);
                     setAllergyBool(numToBool(foodres));
                     const email = userData.email;
+                    const phoneNumber = userData.phoneNumber;
+                    const gender = userData.gender;
+                    const birthday = userData.birthday;
+                    const address = userData.address;
                     const personalData = [
-                        username,
+                        fullName,
                         email,
-                        "+(123) 456-7890",
-                        "Female",
-                        "04/16/1997",
-                        "321 Main St, Chapel Hill, NC 27516"
+                        phoneNumber,
+                        gender,
+                        birthday,
+                        address
                     ];
                     setPersonalData(personalData);
                 } else {
@@ -63,7 +67,7 @@ export default function UserProfile(props) {
                 let updates = {}
                 updates['/users/' + userId + '/foodres'] = num.toString();
 
-                update(ref(db), updates);
+                update(userRef, updates);
             } else {
                 console.log("User not logged in");
             }
@@ -139,7 +143,7 @@ const styles = StyleSheet.create({
         borderRadius: 50
     },
     logOutButton: {
-        backgroundColor: "#FF0000",
+        backgroundColor: "#8DB670",
         width: "25%",
         height: "40%",
         borderRadius: 10
@@ -153,7 +157,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     editButton: {
-        backgroundColor: "#F00",
+        backgroundColor: "#8DB670",
         width: 40,
         height: 40,
         alignItems: "center",

@@ -5,7 +5,7 @@ import { useState } from "react";
 import CreateAccount from "./CreateAccount";
 import LogIn from "./Login";
 
-const Main = () => {
+function Main() {
     const [currentComponent, setCurrentComponent] = useState(<CreateAccount/>);
     const [createAccountText, setCreateAccountText] = useState(styles.activeText);
     const [createAccount, setCreateAccount] = useState(styles.selectorActive);

@@ -7,7 +7,7 @@ import { getUserLocation } from '../../config/location';
 import { AntDesign } from '@expo/vector-icons';
 import HomePartners from './HomePartners';
 import rest_info from "../../backend/restaurant.json";
-
+import HomeSearch from './HomeSearch';
 
 export default function HomeScreen(props) {
    

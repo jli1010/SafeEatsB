@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import PersonalInfo from "./PersonalInfo";
 import Allergies from './Allergies';
@@ -75,43 +75,50 @@ export default function UserProfile(props) {
     }
 
     return (
-        <View style={styles.container}>
-            <View style={styles.upperView}>
-                <Image style={styles.pattern} source={require('../../img/Pattern.png')} />
-                <View style={styles.pictureArea}>
-                    <Text style={styles.profileText}>Profile</Text>
-                    <Image style={styles.profilePicture} source={require('../../img/profile_picture.png')} />
-                    <TouchableOpacity
-                        onPress={() => navigation.navigate("Main")}
-                        underlayColor='#fff'
-                        style={styles.logOutButton}>
-                        <Text style={styles.logOutText}>Log Out</Text>
-                    </TouchableOpacity>
+        <ScrollView contentContainerStyle={styles.scrollViewContent}>
+            <View style={styles.container}>
+                <View style={styles.upperView}>
+                    <Image style={styles.pattern} source={require('../../img/Pattern.png')} />
+                    <View style={styles.pictureArea}>
+                        <Text style={styles.profileText}>Profile</Text>
+                        <Image style={styles.profilePicture} source={require('../../img/profile_picture.png')} />
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate("Main")}
+                            underlayColor='#fff'
+                            style={styles.logOutButton}>
+                            <Text style={styles.logOutText}>Log Out</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <PersonalInfo iconButtonCounter={iconButtonCounter} personalData={personalData} setPersonalData={setPersonalData} />
+                    <Allergies iconButtonCounter={iconButtonCounter} allergyBool={allergyBool} setAllergyBool={setAllergyBool} setDietaryBool={setDietaryBool} />
+                    {iconButtonCounter % 2 == 0 &&
+                        <TouchableOpacity
+                            onPress={() => setIconButtonCounter(iconButtonCounter + 1)}
+                            underlayColor='#fff'
+                            style={styles.editButton}>
+                            <SimpleLineIcons name="pencil" size={24} color="#FFF" />
+                        </TouchableOpacity>
+                    }
+                    {iconButtonCounter % 2 == 1 &&
+                        <TouchableOpacity
+                            onPress={updateInfo}
+                            underlayColor='#fff'
+                            style={styles.editButton}>
+                            <Feather name="check" size={30} color="#FFF" />
+                        </TouchableOpacity>
+                    }
                 </View>
-                <PersonalInfo iconButtonCounter={iconButtonCounter} personalData={personalData} setPersonalData={setPersonalData} />
-                <Allergies iconButtonCounter={iconButtonCounter} allergyBool={allergyBool} setAllergyBool={setAllergyBool} setDietaryBool={setDietaryBool} />
-                {iconButtonCounter % 2 == 0 &&
-                    <TouchableOpacity
-                        onPress={() => setIconButtonCounter(iconButtonCounter + 1)}
-                        underlayColor='#fff'
-                        style={styles.editButton}>
-                        <SimpleLineIcons name="pencil" size={24} color="#FFF" />
-                    </TouchableOpacity>
-                }
-                {iconButtonCounter % 2 == 1 &&
-                    <TouchableOpacity
-                        onPress={updateInfo}
-                        underlayColor='#fff'
-                        style={styles.editButton}>
-                        <Feather name="check" size={30} color="#FFF" />
-                    </TouchableOpacity>
-                }
+                {/* White space at the bottom */}
+                <View style={styles.bottomSpace} />
             </View>
-        </View>
+        </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
+    scrollViewContent: {
+        flexGrow: 1,
+    },
     container: {
         flex: 1,
         backgroundColor: '#F5F5F5',
@@ -168,4 +175,8 @@ const styles = StyleSheet.create({
         bottom: 7.5,
         right: 20
     },
+    bottomSpace: {
+        height: 50, // Adjust the height as needed for the white space
+        backgroundColor: '#FFF' // Make sure it's white
+    }
 });
